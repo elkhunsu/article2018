@@ -444,6 +444,23 @@ section.emoticon_article{
   right: 11px;
   top: 7px;
 }
+.komentar-input{
+    width: 290px;
+  height: 80px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  border: solid 1px #9b9b9b;
+}
+.btn_kirim-komentar{
+  float: right;
+  border-radius: 34px;
+  width: 83px;
+  margin-top: 5px;
+}
+.login-comment_article{
+  position: relative;
+  height: 120px;
+}
 .comment-user_article, .non-login-comment-user_article{
     height: 100%;
     border-bottom: 1px solid #eaeaea;
