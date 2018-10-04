@@ -1,0 +1,677 @@
+<% content_for(:title, "LOOPIAH POIN") %>
+<%# content_for :stylesheet do %>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+  <%= stylesheet_link_tag 'gamification/landing-page_mobile' %>
+
+<%#link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/%>
+<%#script type="text/javascript" src="js/materialize.min.js"></script%>
+<%# end%>
+<%= stylesheet_link_tag 'gamification/landing-page_mobile' %>
+
+<!-- <link rel="stylesheet" media="all" href="/gamification/style - scrollable tab.css" data-turbolinks-track="true"> -->
+<link rel="stylesheet" href="/gamification/style-scrollable-tab_rev.css" data-turbolinks-track="true">
+<script type="text/javascript" src="/gamification/main - scrollable tab.js"></script>
+<div id="" style="margin-top:61px;">
+  <style>
+  .container {
+    width: 100%;
+    padding-left: 6px !important;
+    padding-right: 6px;
+  }
+  .small-width-85 {
+    width: 85%;
+  }
+  h4 {
+    border-bottom: none;
+    border-bottom-style: none;
+  }
+  .gamification_activity-badges-mb h4 {
+    font-weight: 300 !important;
+    line-height: 1.5em;
+  }
+  h5.rewards_merchant-name {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  h6.rewards_product-requirement {
+    font-weight: 300;
+  }
+  .gami-rank_list .gami-userInfo p {
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 2px;
+  }
+  .navGami-mb > .nav > li{
+    width: 100%
+  }
+  /*level status badge*/
+  @media (min-width: 412px) and (max-width:414px){
+    .gami-rank_list .gami-userInfo p{
+      line-height: 1em !important;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+    #circle.uncomplete {
+        width: 96px !important;
+        height: 96px !important;
+    }
+    .progress.progress-gami{
+        width: 75% !important;
+    }
+    .level-status img{
+      left: 77% !important;
+      margin-left: 0px !important;
+      width: 70px
+    }
+  }
+  @media (max-width: 375px){
+    .level-status img{
+      left: 75% !important;
+      margin-left: 0px !important;
+      width: 73px
+    }
+    .progress.progress-gami{
+      width:74% !important
+    }
+  }
+  @media (max-width: 360px){
+    .level-status img{
+      left: 74% !important
+    }
+  }
+</style>
+  <div class="container">
+    <div id="user-profile">
+      <!-- profile section -->
+      <div class="row mgCenter">
+        <div class="col-xs-12 col-sm-12" style="margin-top: 15px">
+          <img src="<%= if current_user.avatar.url then current_user.avatar.url else '/gamification/img-v2/boy.jpg' end %>" class="img-responsive mgCenter" style="border-radius: 50%;height: auto;width: 120px;">
+          <p style="font-size: 15px;font-weight: bold;margin: 10px 0 20px;"><%= current_user.first_name %></p>
+        </div>
+      </div>
+      <div class="row mgCenter" style="padding: 0 10px;">
+        <div class="col-xs-3 col-sm-3" style="padding-left: 5px;padding-right: 5px;">
+          <% if current_user.gamification_level.l3_upgraded_status %>
+            <!-- level 3 -->
+            <img src="/gamification/img-v2/Asset 5.png" class="img-responsive" style="border-radius: 50%;margin: 0 auto;text-align: center;max-height: 48px;">
+          <% elsif current_user.gamification_level.l2_upgraded_status %>
+            <!-- level 2 -->
+            <img src="/gamification/img-v2/Asset 4.png" class="img-responsive" style="border-radius: 50%;margin: 0 auto;text-align: center;max-height: 48px;">
+          <% elsif current_user.gamification_level.l1_upgraded_status %>
+            <img src="/gamification/img-v2/Asset 1.png" class="img-responsive" style="border-radius: 50%;margin: 0 auto;text-align: center;max-height: 48px;">
+          <% else #TARO SINI KALO BLM LEVEL 1%>
+          <% end %>
+        </div>
+        <div class="col-xs-4 col-sm-4" style="border-left: 1px solid #ccc;border-right: 1px solid #ccc;padding-left: 10px;padding-right: 10px;">
+          <p style="font-size: 0.6em;font-weight: normal;margin-bottom: 5px;margin-top: 5px;">LOOPiah</p>
+          <p style="font-size: 14px;font-weight: bold;margin-bottom: 5px;">
+            <span><img src="/gamification/img/loopiah.png" class="img-responsive" style="max-width: 12px;display: inline-block"></span>
+            <span class="_gami_loopiah-current"></span>
+          </p>
+        </div>
+        <div class="col-xs-5 col-sm-5" style="border-right: none;padding-left: 10px;padding-right: 5px;">
+          <p style="font-size: 0.6em;font-weight: normal;margin-bottom: 5px;margin-top: 5px;">Kesempatan Spin Wheel</p>
+          <p style="font-size: 14px;font-weight: bold;float: left;margin-bottom: 5px;margin-left: 5px;">
+            <span><img src="/gamification/img-v2/Asset 3.png" class="img-responsive" style=" max-width: 12px;display: inline-block" ;=""></span>
+            <span class="_gami_unspent-point"></span>
+          </p>
+          <span style="float: right;">
+            <!-- <a href="" target="_blank" > -->
+            <a href="#" data-toggle="modal" data-target="#modal_spinwheel" style="text-decoration: none;">
+              <button id="#goto-spinwheel" class="btn btn_gamification-main-mb">MAIN</button>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <div id="tab-gami" class="row nav-tab navGami-mb cd-tabs" role="tablist">
+        <ul class="nav cd-tabs-navigation">
+          <li class="level active">
+            <a href="#tab-level" aria-controls="tab_gami" role="tab" data-toggle="tab" data-content="inbox" class="selected">Level</a>
+            <span>
+              <small></small>
+            </span>
+          </li>
+          <li class="loopiah">
+            <a href="#tab-loopiah" aria-controls="tab_gami" role="tab" data-toggle="tab">Quest</a>
+            <span>
+              <small></small>
+            </span>
+          </li>
+          <li class="rewards_voucher">
+            <a href="#tab-rewards_voucher" aria-controls="tab_gami" role="tab" data-toggle="tab">Rewards Voucher</a>
+            <span>
+              <small></small>
+            </span>
+          </li>
+          <li class="leaderboard">
+            <a href="#tab-leaderboard" aria-controls="tab_gami" role="tab" data-toggle="tab">Leaderboard</a>
+            <span>
+              <small></small>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container" style="border-top: 1px solid rgba(255, 127, 80, 0.5);">
+      <div class="tab-content user-gamification cd-tabs-content">
+        <!-- LEVEL -->
+        <div id="tab-level" class="row tab-pane fade selected active in" style="padding-left: 5%;padding-right: 5%;" data-content="inbox">
+          <!-- LEVEL 1 -->
+          <div id="gami-level1" class="col-xs-12 col-sm-12" style="margin-bottom: 10%;">
+            <div class="level-status row valignCenter">
+              <div class="col-xs-10 col-sm-10 progress progress-gami">
+                <div data-percentage="0%" style="width: <%= 100*(1+(@level.l1_looper_status ? 1 : 0))/2 %>%;" class="progress-bar progress-bar-gami" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div id="circle" class="col-xs-2 col-sm-2 uncomplete" style="position: relative;">
+                <!-- lock level 1 -->
+                <!--  -->
+                <% if current_user.gamification_level.l1_upgraded_status %>
+                <!-- unlock level 1 -->
+                  <img src="/gamification/img-v2/Asset 1.png" class="img-responsive" style="position: absolute;top: 8px;left: 8px !important;right: 0;">
+                <% else %>
+                <!-- lock level 1 -->
+                  <img src="/gamification/img-v2/Asset 17.png" class="img-responsive" style="position: absolute;top: 16px;left: 8px !important;right: 0;">
+                <% end %>
+              </div>
+            </div>
+            <div class="level-challenge row valignCenter">
+              <div class="col-xs-9 col-sm-9">
+                <!-- buat akun -->
+                <div class="row challenge" style="border: 1px solid #ccc;border-radius: 4px;padding: 10px;margin-bottom: 10px;margin-right: -5px;">
+                  <div class="col-xs-4 col-sm-4" style="padding-left: 0;">
+                    <img src="/gamification/img-v2/Asset 30.png" class="img-responsive" style="border-radius: 50%;margin: 0 auto;text-align: center;width: 100%;height: auto;">
+                  </div>
+                  <div class="col-xs-8 col-sm-8" style="padding: 0;">
+                    <p style="font-size: 12px;color: #333;padding-top: 5px;">Buat akun di portal loop.co.id</p>
+                    <!-- progess bar per challenge -->
+                    <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                      <div data-percentage="0%" style="width: 100%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">1/1</p>
+                    <!-- <a href="/users/sign_up" target="_blank">
+                      <i class="col-xs-12 col-sm-12 fa fa-arrow-circle-right" style="font-size: 16px;text-align: right;padding-right: 10px;padding-top: 5px;" aria-hidden="true"></i>
+                    </a> -->
+                  </div>
+                </div>
+                <!-- loopers confirmation -->
+                <div class="row challenge" style="border: 1px solid #ccc;border-radius: 4px;padding: 10px;margin-bottom: 10px;margin-right: -5px;">
+                  <div class="col-xs-4 col-sm-4" style="padding-left: 0;position: relative;">
+                    <img src="/gamification/img-v2/Asset 31.png" class="img-responsive <%= unless @level.l1_looper_status == true then 'img-grayscale' end %>" style="position: absolute;border-radius: 50%;margin: 0 auto;text-align: center;width: 80%;height: auto;">
+                    <!-- <i class="fa fa-check-circle" style="position: absolute;color: #5CB85C;font-size: 25px;margin-left: 64px;margin-top: 60px;" aria-hidden="true"></i> -->
+                  </div>
+                  <div class="col-xs-8 col-sm-8" style="padding: 0;">
+                    <p style="font-size: 12px;color: #333;padding-top: 5px;">Tingkatkan status akun menjadi LOOPERS</p>
+                    <!-- progess bar per challenge -->
+
+                    <% if @level.l1_looper_status == true %>
+                      <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                        <div data-percentage="0%" style="width: 100%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">1/1</p>
+                    <% else %>
+                      <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                        <div data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">0/1</p>
+                    <% end %>
+                    <% unless @level.l1_looper_status == true %>
+                      <% unless current_user.loop_account %>
+                        <% if current_user.phone_number.start_with?('62822')%>
+                          <a href="javascript:;" data-dismiss="modal" onclick="callRegisterPremium2(this, event);" hargapaket="1" namapaket="NONE" packetid="99999" id="<%= current_user.id %>">
+                            <i class="col-md-12 col-lg-12 fa fa-arrow-circle-right" style="font-size: 16px;text-align: right;padding-right: 10px;padding-top: 5px;" aria-hidden="true"></i>
+                          </a>
+                        <% else %>
+                          <a href="javascript:;" data-dismiss="modal" onclick="phone_number()" hargapaket="1" namapaket="NONE" packetid="99999" id="<%= current_user.id %>">
+                            <i class="col-md-12 col-lg-12 fa fa-arrow-circle-right" style="font-size: 16px;text-align: right;padding-right: 10px;padding-top: 5px;" aria-hidden="true"></i>
+                          </a>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div id="base-1" class="col-xs-3 col-sm-3">
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 22.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Penukaran Reward Voucher Level 1</p>
+                </div>
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 23.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Diskon 10% untuk pembelian paket data</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEVEL 2 -->
+          <div id="gami-level2" class="col-xs-12 col-sm-12" style="margin-bottom: 10%;">
+            <div class="level-status row valignCenter">
+              <div class="col-xs-10 col-sm-10 progress progress-gami">
+                <div data-percentage="0%" style="width: <%= 100*((@level.l2_spending_status ? 1 : 0)+(@user_improve_count/4.0))/2 %>%;" class="progress-bar progress-bar-gami" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div id="circle" class="col-xs-2 col-sm-2 uncomplete" style="position: relative;">
+                <% if current_user.gamification_level.l2_upgraded_status %>
+                <!-- unlock level 2 -->
+                  <img src="/gamification/img-v2/Asset 4.png" class="img-responsive" style="position: absolute;top: 8px;left: 8px !important;right: 0;">
+                <% else %>
+                <!-- lock level 2 -->
+                  <img src="/gamification/img-v2/Asset 17.png" class="img-responsive" style="position: absolute;top: 16px;left: 8px !important;right: 0;">
+                <% end %>
+              </div>
+            </div>
+            <div class="level-challenge row valignCenter">
+              <div class="col-xs-9 col-sm-9">
+              <!-- beli paket -->
+              <div class="row challenge" style="border: 1px solid #ccc;border-radius: 4px;padding: 10px;margin-bottom: 10px;margin-right: -5px;">
+                <div class="col-xs-4 col-sm-4" style="padding-left: 0;position: relative;">
+                  <img src="/gamification/img-v2/Asset 32.png" class="img-responsive <%= unless @level.l2_spending_status == true then 'img-grayscale' end %>" style="position: absolute;border-radius: 50%;margin: 0 auto;text-align: center;width: 80%;height: auto;">
+                  <!-- <i class="fa fa-check-circle" style="position: absolute;color: #5CB85C;font-size: 25px;margin-left: 64px;margin-top: 60px;" aria-hidden="true"></i> -->
+                </div>
+                <div class="col-xs-8 col-sm-8" style="padding: 0;">
+                  <p style="font-size: 12px;color: #333;padding-top: 5px;">Beli paket data di portal loop.co.id sejumlah 40K (berlaku akumulasi)</p>
+                  <!-- progess bar per challenge -->
+
+                  <% if @level.l2_spending_status == true %>
+                    <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                      <div data-percentage="0%" style="width: 100%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">1/1</p>
+                  <% else %>
+                    <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                      <div data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">0/1</p>
+                  <% end %>
+                  <a href="/looperzones/looppackage">
+                    <i class="col-xs-12 col-sm-12 fa fa-arrow-circle-right" style="font-size: 16px;text-align: right;padding-right: 10px;padding-top: 5px;" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+                <!-- user improvement -->
+                <div class="row challenge" style="border: 1px solid #ccc;border-radius: 4px;padding: 10px;margin-bottom: 10px;margin-right: -5px;">
+                  <div class="col-xs-4 col-sm-4" style="padding-left: 0;">
+                    <img src="/gamification/img-v2/Asset 34.png" class="img-responsive <%= if @user_improve_count < 4 then 'img-grayscale' end %>" style="border-radius: 50%;margin: 0 auto;text-align: center;width: 100%;height: auto;">
+                  </div>
+                  <div class="col-xs-8 col-sm-8" style="padding: 0;">
+                    <p style="font-size: 12px;color: #333;padding-top: 5px;">Lengkapi data diri dan hubungkan LOOP ke sosial media</p>
+                    <!-- progess bar per challenge -->
+                    <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                      <div data-percentage="0%" style="width: <%= 100*@user_improve_count/4 %>%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;"><%= @user_improve_count %>/4</p>
+                    <a href="/user_profile">
+                      <i class="col-xs-12 col-sm-12 fa fa-arrow-circle-right" style="font-size: 16px;text-align: right;padding-right: 10px;padding-top: 5px;" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div id="base-2" class="col-xs-3 col-sm-3">
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 22.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Penukaran Reward Voucher Level 2</p>
+                </div>
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 23.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Diskon 10% untuk pembelian paket data</p>
+                </div>
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 29.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Bonus LOOPiah</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEVEL 3 -->
+          <div id="gami-level3" class="col-xs-12 col-sm-12" style="margin-bottom: 10%;">
+            <div class="level-status row valignCenter">
+              <div class="col-xs-10 col-sm-10 progress progress-gami">
+                <% if @level.l2_spending_status == true %>
+                  <div data-percentage="0%" style="width: <%= @level.total_spending > 40000 ? 100 : 100*@level.total_spending/40000 %>%;" class="progress-bar progress-bar-gami" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                <% else %>
+                  <div data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-gami" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                <% end %>
+              </div>
+              <div id="circle" class="col-xs-2 col-sm-2 uncomplete" style="position: relative;">
+                <% if current_user.gamification_level.l3_upgraded_status %>
+                <!-- unlock level 3 -->
+                  <img src="/gamification/img-v2/Asset 5.png" class="img-responsive" style="position: absolute;top: 8px;left: 8px !important;right: 0;">
+                <% else %>
+                <!-- lock level 3 -->
+                  <img src="/gamification/img-v2/Asset 17.png" class="img-responsive" style="position: absolute;top: 16px;;left: 8px !important;right: 0;">
+                <% end %>              
+              </div>
+            </div>
+            <div class="level-challenge row valignCenter">
+              <div class="col-xs-9 col-sm-9">
+                <!-- beli paket -->
+                <div class="row challenge" style="border: 1px solid #ccc;border-radius: 4px;padding: 10px;margin-bottom: 10px;margin-right: -5px;">
+                  <div class="col-xs-4 col-sm-4" style="padding-left: 0;">
+                    <img src="/gamification/img-v2/Asset 32.png" class="img-responsive <% unless @level.l3_upgraded_status %><%= unless @level.l2_spending_status == true or @level.total_spending >= 40000 then 'img-grayscale' end %> <% end %>" style="border-radius: 50%;margin: 0 auto;text-align: center;width: 100%;height: auto;">
+                  </div>
+                  <div class="col-xs-8 col-sm-8" style="padding: 0;">
+                    <p style="font-size: 12px;color: #333;padding-top: 5px;">Beli paket data di portal loop.co.id sejumlah 40K (berlaku akumulasi) dalam rentang 30 hari terakhir</p>
+                    <% if @level.l3_upgraded_status %>
+                      <% if @level.l3_countdown_time %>
+
+                        <% if @level.l3_countdown_time + 30.days > DateTime.now %>
+                          <p style="font-size: 12px;color: #333;padding-top: 5px;margin-bottom: 0px;">Sisa masa aktif level: <%= (Date.parse((@level.l3_countdown_time  + 30.days).to_s) - DateTime.now).to_i %> hari</p>
+                        <% else %>
+                          <p style="font-size: 12px;color: #333;padding-top: 5px;margin-bottom: 0px;">Sisa masa aktif level: 0 hari</p>
+                        <% end %>
+
+                      <% elsif @level.last_spending_time %>
+
+                        <% if @level.last_spending_time + 30.days > DateTime.now %>
+                          <p style="font-size: 12px;color: #333;padding-top: 5px;margin-bottom: 0px;">Sisa masa aktif level: <%= (Date.parse((@level.last_spending_time  + 30.days).to_s) - DateTime.now).to_i %> hari</p>
+                        <% else %>
+                          <p style="font-size: 12px;color: #333;padding-top: 5px;margin-bottom: 0px;">Sisa masa aktif level: 0 hari</p>
+                        <% end %>
+
+                      <% else %>
+                        <p style="font-size: 12px;color: #333;padding-top: 5px;margin-bottom: 0px;">Sisa masa aktif level: 0 hari</p>
+                      <% end %>
+                    <% else %>
+                      <p style="font-size: 12px;color: #333;padding-top: 5px;margin-bottom: 0px;">Sisa masa aktif level: 0 hari</p>
+                    <% end %>
+
+
+                    <% if @level.l2_upgraded_status == true %>
+                      <% if @level.l2_spending_status == true %>
+                        <% if @level.l3_spending %>
+                          <p style="font-size: 12px;color: #333;margin-bottom: 10px;">Jumlah pembelian: <%= @level.l3_spending %></p>
+                        <% else %>
+                          <p style="font-size: 12px;color: #333;margin-bottom: 10px;">Jumlah pembelian: <%= @level.total_spending %></p>
+                        <% end %>
+                      <% else %>
+                        <p style="font-size: 12px;color: #333;margin-bottom: 10px;">Jumlah pembelian: 0</p>
+                      <% end %>
+                    <% else %>
+                      <p style="font-size: 12px;color: #333;margin-bottom: 10px;">Jumlah pembelian: 0</p>
+                    <% end %>
+                    <!-- progess bar per challenge -->
+                    <div class="col-xs-10 col-sm-10 progress progress-challenge">
+                      <% if @level.l2_spending_status == true and @level.l2_upgraded_status %>
+                        <div data-percentage="0%" style="width: <%= @level.total_spending > 40000 ? 100 : 100*@level.total_spending/40000 %>%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                      <% else %>
+                        <div data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-challenge" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                      <% end %>
+                    </div>
+                    <% if @level.l2_spending_status == true and @level.total_spending >= 40000 and @level.l2_upgraded_status %>
+                      <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">1/1</p>
+                    <% else %>
+                      <p class="col-xs-2 col-sm-2" style="margin-bottom: 0;margin-top: -5px;font-size: 0.8em;">0/1</p>
+                    <% end %>
+                    <a href="/looperzones/looppackage">
+                      <i class="col-xs-12 col-sm-12 fa fa-arrow-circle-right" style="font-size: 16px;text-align: right;padding-right: 10px;padding-top: 5px;" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div id="base-2" class="col-xs-3 col-sm-3">
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 22.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Penukaran Reward Voucher Level 3</p>
+                </div>
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 23.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Diskon 10% untuk pembelian paket data</p>
+                </div>
+                <div class="benefit">
+                  <img src="/gamification/img-v2/Asset 29.png" class="img-responsive mgCenter">
+                  <p style="font-size: 10px;color: #fff;padding-top: 5px;">Bonus LOOPiah</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOOPIAH -->
+        <div id="tab-loopiah" class="tab-pane fade">
+          <section id="gamification-activity-mb" style="/* background-image: url('/gamification/img/bg-lego.jpg'); */background-size: cover;color: #333;">
+            <div class="row text-center pdBtm20px">
+              <h2>AYO TAMBAH KESEMPATAN PUTAR KAMU!</h2>
+              <div class="hr-black"></div>
+            </div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner carousel-inner-mb" role="listbox">
+                <!-- Page 1 -->
+                <div class="item active">
+                  <div class="row gamification_activity-badges-mb mgCenter small-width-85">
+                    <%# <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__registrasi" style="text-decoration: none;">
+                      <img id="act-registration-active" style="display: block" src="/gamification/img/act 01_first reg new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-registration-inactive" style="display: none" src="/gamification/img/act 01_first reg new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>buat akun di
+                        <u>loop.co.id</u>
+                      </h4>
+                    </div> %>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__loopers" style="text-decoration: none;">
+                      <img id="act-complete-profile-active" style="display: block" src="/gamification/img/act 02_loopers new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-complete-profile-inactive" style="display: none" src="/gamification/img/act 02_loopers new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>status akun
+                        <u>'LOOPERS'</u>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__kunjungan" style="text-decoration: none;">
+                      <img id="act-visit-portal-active" style="display: block" src="/gamification/img/act 03_visit1 new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-visit-portal-inactive" style="display: none" src="/gamification/img/act 03_visit1 new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>mengunjungi
+                        <u>portal</u>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__bagikan" style="text-decoration: none;">
+                      <img id="act-share-content-active" style="display: block" src="/gamification/img/act 04_share new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-share-content-inactive" style="display: none" src="/gamification/img/act 04_share new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>membagikan
+                        <u>konten</u>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__belipaket" style="text-decoration: none;">
+                      <img id="act-buy-package-active" style="display: block" src="/gamification/img/act 10_buy package new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-buy-package-inactive" style="display: none" src="/gamification/img/act 10_buy package new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>membeli paket
+                        <u>data</u>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__mainprogram" style="text-decoration: none;">
+                      <img id="act-play-program-active" style="display: block" src="/gamification/img/act 06_play new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-play-program-inactive" style="display: none" src="/gamification/img/act 06_play new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>memainkan
+                        <u>program</u>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__bacaartikel" style="text-decoration: none;">
+                      <img id="act-read-content-active" style="display: block" src="/gamification/img/act 09_read article new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-read-content-inactive" style="display: none" src="/gamification/img/act 09_read article new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>membaca
+                        <u>artikel</u>
+                      </h4>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" data-toggle="modal" data-target="#tooltip_activity__komentar" style="text-decoration: none;">
+                      <img id="act-comment-content-active" style="display: block" src="/gamification/img/act 11_comment new.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <img id="act-comment-content-inactive" style="display: none" src="/gamification/img/act 11_comment new gray.png" alt="" class="img-responsive mgCenter small-width-80">
+                      <h4>mengomentari
+                        <u>artikel</u>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <!-- <a class="left carousel-control carousel-control-mb" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left gylphicon-control-mb" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control carousel-control-mb" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right gylphicon-control-mb" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a> -->
+            </div>
+          </section>
+        </div>
+
+        <!-- REWARDS VOUCHER-->
+        <div id="tab-rewards_voucher" class="tab-pane fade" style="padding:5%;">
+          <section id="gamification-rewards-mb" style="margin: 0;">
+            <div class="container">
+              <div class="row">
+                <!-- Card -->
+                <div class="row">
+                  <!-- <div id="dynamic-content" class="">
+                          </div> -->
+                  <div id="dynamic-content" class="">
+                    <%= render 'gamification/partials/rewards.html' %>
+                  </div>
+                  <div class="col-xs-12" align="center" style="margin: 2% 0;"></div>
+                </div>
+                <!-- end Card -->
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- LEADERBOARD -->
+        <div id="tab-leaderboard" class="row tab-pane fade">
+          <div id="leaderboard-total">
+            <img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" style="width: 40px;height: 40px;display: block;margin: auto;" />
+          </div>
+          <div id="leaderboard-monthly" style="margin-top: 10%;">
+            <img src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif" style="width: 40px;height: 40px;display: block;margin: auto;" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL -->
+    <%= render 'gamification/partials/modal_rolet.html' %>
+    <%= render 'gamification/partials/modal_notif_gami' %>
+  </div>
+</div>
+
+<% content_for :javascript do %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/gamification/main-scrollable-tab.min.js"></script>
+<% end %>
+
+<% content_for :bottom do %>
+  <%= javascript_include_tag 'gamification/landing-page' %>
+  <script type="text/javascript">
+    gamificationLanding("<%= ENV['TRACKER'] %>", "<%= current_user.id %>", "<%= @tracker.create_token %>");
+
+    if(window.location.hash) {
+      var ref = 'a[href="' + window.location.hash + '"]'
+      $(ref).tab("show");
+    }
+
+    $(function(){
+      var lfCont = $("#leaderboard-total");
+      var mnCont = $("#leaderboard-monthly");
+
+      if(!lfCont.hasClass("loaded")){
+        $.ajax({
+          type: 'GET',
+          url: <%= raw(url_for(action: 'ajax_lifetime_leaderboard').to_json) %>,
+          success: function(data){
+            lfCont.addClass("loaded");
+            lfCont.html(data);
+          }
+        });
+      }
+
+      if(!mnCont.hasClass("loaded")){
+        $.ajax({
+          type: 'GET',
+          url: <%= raw(url_for(action: 'ajax_monthly_leaderboard').to_json) %>,
+          success: function(data){
+            mnCont.addClass("loaded");
+            mnCont.html(data);
+          }
+        });
+      }
+    });
+
+    <% if current_user.gamification_level.l1_achieved_status %>
+      <% if !current_user.gamification_level.l1_upgraded_status %>
+        callApiUpgradel1()
+      <% elsif current_user.gamification_level.l2_achieved_status %>
+        <% if !current_user.gamification_level.l2_upgraded_status %>
+          callApiUpgradel2()
+        <% elsif current_user.gamification_level.l3_achieved_status %>
+          <% if !current_user.gamification_level.l3_upgraded_status %>
+            callApiUpgradel3()
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if @notif_turun_level %>
+      $('#levelDownModal').modal();
+    <% end %>
+function callApiUpgradel1() {
+    var user_id = <%=current_user.id%>;
+    if (user_id != undefined) {
+        $.ajax({
+            url: "upgrade_l1",
+            type: "POST",
+            data: {
+                id_user: user_id
+            },
+            success: function (data) {
+                $('#modal_levelup1').modal();
+            },
+            error: function (data) {
+                $('#modal_levelup1').modal();
+            }
+        });
+    } else {
+        //$('#myModal-loop_login').modal();
+    }
+}
+function callApiUpgradel2() {
+    var user_id = <%=current_user.id%>;
+    if (user_id != undefined) {
+        $.ajax({
+            url: "upgrade_l2",
+            type: "POST",
+            data: {
+                id_user: user_id
+            },
+            success: function (data) {
+                $('#modal_levelup2').modal();
+            },
+            error: function (data) {
+                $('#modal_levelup2').modal();
+            }
+        });
+    } else {
+        //$('#myModal-loop_login').modal();
+    }
+}
+function callApiUpgradel3() {
+    var user_id = <%=current_user.id%>;
+    if (user_id != undefined) {
+        $.ajax({
+            url: "upgrade_l3",
+            type: "POST",
+            data: {
+                id_user: user_id
+            },
+            success: function (data) {
+                $('#modal_levelup3').modal();
+            },
+            error: function (data) {
+                $('#modal_levelup3').modal();
+            }
+        });
+    } else {
+        //$('#myModal-loop_login').modal();
+    }
+}
+  </script>
+<% end %>
