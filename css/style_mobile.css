@@ -136,31 +136,29 @@ section.article_content > div > p{
 }
 
 .button-center_article{
-	width: 200px;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
 .more_read-article{
-	position: relative;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	width: 200px;
-	  height: 36px;
-  border-radius: 18px;
-  background-color: #ee484f;
-  color: white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
     font-family: Lato;
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.43;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  border-color: unset;
-}
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    border-color: unset;
+    width: 264px;
+    height: 49px;
+    border-radius: 25px;
+    background-color: #ee484f;
+  }
 section.article_terkait{
 position: relative;
     margin-right: auto;
@@ -196,15 +194,15 @@ position: relative;
     font-weight: bold;
     font-size: 3em;
     text-align: center;
-    width: 185px;
-    height: 187px;
     margin: 5px;
-    background-color: #fff;
-    -moz-box-shadow: 0 4px 8px 0 #ffeceb , 0 6px 33px 0 rgba(255,0,0,.19);
-    -webkit-box-shadow: 0 4px 8px 0 #ffeceb, 0 6px 33px 0 rgba(255,0,0,.19);
-    box-shadow: 0 4px 8px 0 #ffeceb, 0 6px 33px 0 rgba(255,0,0,.19);
-    border-radius: 4px;
+    -moz-box-shadow: 2px 4px 7px 6px rgba(252, 123, 122, 0.21);
+    -webkit-box-shadow: 2px 4px 7px 6px rgba(252, 123, 122, 0.21);
+    box-shadow: 2px 4px 7px 6px rgba(252, 123, 122, 0.21);
     overflow: hidden;
+    width: 250px;
+    height: 162px;
+    border-radius: 4px;
+    background-color: #ffffff;
 }
 .mini-box_artikel .main-image {
     height: 116px;
@@ -226,22 +224,7 @@ position: relative;
     padding: 10px;
     color: #000;
 }
-.mini-box_artikel {
-    background: #ff6347;
-    color: #fff;
-    font-weight: bold;
-    font-size: 3em;
-    text-align: center;
-    width: 165px;
-    height: 187px;
-    margin: 5px;
-    background-color: #fff;
-    -moz-box-shadow: 0 4px 8px 0 #ffeceb , 0 6px 33px 0 rgba(255,0,0,.19);
-    -webkit-box-shadow: 0 4px 8px 0 #ffeceb, 0 6px 33px 0 rgba(255,0,0,.19);
-    box-shadow: 0 4px 8px 0 #ffeceb, 0 6px 33px 0 rgba(255,0,0,.19);
-    border-radius: 4px;
-    overflow: hidden;
-}
+
 .artikel-icon-videos {
     position: absolute;
     background: url(/revamp2018/images/icon/video-camera.svg) 5px 3px no-repeat;
@@ -300,25 +283,32 @@ position: relative;
     width: 12px;
 }
 .like-artikel {
-    position: absolute;
+    position: relative;
     width: 35px;
+    display: inline-block;
+}
+.like-artikel img{
+  width: 16px
 }
 .wrap-mini-artikel_comment .comment-artikel {
     height: 12px;
     width: 12px;
 }
 .comment-artikel {
-    position: absolute;
-    left: 40px;
+    position: relative;
+    display: inline-block;
+}
+.comment-artikel img{
+  width: 16px
 }
 section.article_terkait, section.article_terbaru, section.emoticon_article{
-  background-color: #f8f8f8;
+  /*background-color: #f8f8f8;*/
 }
 section.article_terbaru{
 	padding-top: 16px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #d2d2d2d2
-}
+/*  border-bottom: 1px solid #d2d2d2d2
+*/}
 .header_article-terbaru, .header_article-terkait{
 	  font-family: Lato;
   font-size: 16px;
@@ -329,6 +319,10 @@ section.article_terbaru{
   letter-spacing: -0.4px;
   color: #4a4a4a;
   margin-bottom: 17px
+}
+.article_terbaru .container > a.mini_box-article-terbaru{
+  height: 90px;
+  width: 100%
 }
 .article_terbaru .container > a {
 	  font-family: Lato;
@@ -346,12 +340,50 @@ section.article_terbaru{
     position: relative;
     display: block;
 }
+.img_article-terbaru{
+  float: left;
+}
+.title_article-terbaru{
+    float: right;
+    width: 232px;
+    height: 67px;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #444444;
+}
+.detil_article-terbaru{
+    width: 232px;
+    float: right;
+    bottom: 0;
+}
+.author_article-terbaru{
+  display: inline-block;
+  float: left;
+}
+.status_article-terbaru{
+    float: left;
+    left: 50px;
+    position: relative;
+    width: 81px;
+}
+.border-bottom_article-terbaru{
+  width: 320px;
+  border-bottom: 1px solid #dddddd;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+}
 section.emoticon_article{
   padding-top: 16px;
 }
 .header-emoticon_article{
     font-family: Lato;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -393,29 +425,38 @@ section.emoticon_article{
     margin: 0 auto;
 }
 .header-comment_article{
-  position: relative;
-  height: 40px;
-  background-color: #fc7b7a;
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.44;
-  letter-spacing: normal;
-  color: #ffffff;
-  padding: 7px;
+    position: relative;
+    height: 40px;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    color: #ffffff;
+    padding: 7px;
+    border-radius: 4px;
+    background-color: #094767;
 }
 .total-comment_article{
   position: absolute;
   right: 11px;
   top: 7px;
 }
-.comment-user_article{
+.comment-user_article, .non-login-comment-user_article{
     height: 100%;
     border-bottom: 1px solid #eaeaea;
     margin: 13px 10px 10px 10px;
     padding: 10px;
+      font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    color: #555555;
 }
 .avatar-user_article{
 display: inline-flex;
@@ -425,13 +466,14 @@ display: inline-flex;
 .name-user_comment{
     font-family: Lato;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1;
+  line-height: 0.88;
   letter-spacing: normal;
   color: #094767;
   margin-bottom: 5px;
+  color: #2dc1cc;
 }
 .date-comment_article{
     height: 10px;
