@@ -182,7 +182,7 @@ position: relative;
     flex: 1;
     overflow: auto;
     float: left;
-    width: 77%
+    width: 60%
 }
 .mini-box_artikel-box{
     display: -webkit-box;
@@ -201,7 +201,7 @@ position: relative;
     font-weight: bold;
     font-size: 3em;
     text-align: center;
-    width: 185px;
+    width: 250px;
     height: 187px;
     margin: 5px;
     margin-right: 11px;
@@ -212,43 +212,14 @@ position: relative;
     border-radius: 4px;
     overflow: hidden;
 }
-.mini-box_artikel:nth-child(1){
-  width: 304px
-}
-.mini-box_artikel:nth-child(2){
-  width: 355px
-}
-.mini-box_artikel:nth-child(3){
-  width: 355px
-}
-.mini-box_artikel:nth-child(4){
-  width: 304px
-}
-.mini-box_artikel:nth-child(1) .content-box{
-    width: 244px;
-    height: 99px;
-}
-.mini-box_artikel:nth-child(2) .content-box{
-    width: 284px;
-    height: 94px;
-}
-.mini-box_artikel:nth-child(3) .content-box{
-    width: 284px;
-    height: 94px;
-}
-.mini-box_artikel:nth-child(4) .content-box{
-    width: 244px;
-    height: 99px;
-}
 .mini-box_artikel .main-image {
-    height: 187px;
+/*    height: 187px;
     width: inherit;
     position: absolute;   
-}
+*/}
 .mini-box_artikel .main-image img{
     vertical-align: middle;
-    width: 355px;
-    height: inherit;
+    width: 250px;
     object-fit: cover;
 }
 .mini-box_artikel .content-box {
@@ -259,12 +230,9 @@ position: relative;
     font-stretch: normal;
     line-height: 1.38;
     letter-spacing: normal;
-    color: #4a4a4a;
     border-width: 0;
-    position: relative;
-    top: -40px;
-    width: 144px;
-    height: 105px;
+    width: 226px;
+    height: 112px;
     background: inherit;
     background-color: rgba(255,255,255,1);
     border: none;
@@ -285,19 +253,17 @@ position: relative;
 .content_article-terbaru-box{
     overflow-y: auto;
     overflow-x: hidden;
-    width: 190px;
     height: 335px;
     margin-top: 15px;
 }
 .mini-box_artikel-terbaru{
-    display: inline-block;
+  display: inline-block;
     float: right;
-    width: 200px;
+    width: 348px;
     height: 384px;
     margin-top: 7px;
     border-radius: 4px;
     background-color: #ffffff;
-    box-shadow: 0 1px 5px 0 rgba(219, 219, 219, 0.5);
     border-top: 4px solid #ee484f;
     padding: 10px;
     font-family: Lato;
@@ -308,7 +274,7 @@ position: relative;
     line-height: 1.17;
     letter-spacing: normal;
     color: #4a4a4a;
-    box-shadow: 0 1px 5px 0 rgba(219, 219, 219, 0.5);
+    box-shadow: 2px 4px 7px 6px rgba(252, 123, 122, 0.21);
 }
 .mini-box_artikel-terbaru a{
   font-size: 12px;
@@ -476,6 +442,8 @@ section.emoticon_article > div.container{
   letter-spacing: normal;
   color: #ffffff;
   padding: 7px;
+  border-radius: 4px;
+  background-color: #094767;
 }
 .total-comment_article{
     background: url(/images/comment_.png) no-repeat;
@@ -506,26 +474,28 @@ display: inline-flex;
 }
 .name-user_comment{
     font-family: Lato;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1;
+  line-height: 0.78;
   letter-spacing: normal;
   color: #094767;
+  margin-bottom: 5px;
+  color: #2dc1cc;
   margin-bottom: 5px;
 }
 .date-comment_article{
     height: 10px;
-  font-family: Lato;
-  font-size: 11px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 0.91;
-  letter-spacing: normal;
-  color: #999999;
-  margin-bottom: 5px;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.83;
+    letter-spacing: normal;
+    color: #9b9b9b;
+    margin-bottom: 5px;
 }
 .user-comment{
     font-family: Lato;
