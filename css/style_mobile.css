@@ -127,7 +127,7 @@ section.article_content > div > p{
 }
 .main_article:after {
     position: absolute;
-    bottom: -10px;
+    bottom: -40px;
     height: 180px;
     width: 100%;
     content: "";
