@@ -182,7 +182,9 @@ position: relative;
     flex: 1;
     overflow: auto;
     float: left;
-    width: 60%
+    width: 60%;
+    bottom: 0;
+    margin-top: 12px;
 }
 .mini-box_artikel-box{
     display: -webkit-box;
@@ -201,8 +203,7 @@ position: relative;
     font-weight: bold;
     font-size: 3em;
     text-align: center;
-    width: 250px;
-    height: 187px;
+    height: 162px;
     margin: 5px;
     margin-right: 11px;
     background-color: #fff;
@@ -243,7 +244,7 @@ position: relative;
     padding: 10px;
     color: #000;
     position: absolute;
-    top: 75px;
+    top: 50px;
 }
 .mini-box_artikel:hover{
       -moz-box-shadow: 0 4px 8px 0 #ff0d004d, 0 6px 33px 0 rgba(255,0,0,.19);
@@ -259,7 +260,7 @@ position: relative;
 .mini-box_artikel-terbaru{
   display: inline-block;
     float: right;
-    width: 348px;
+    width: 38.7%;
     height: 384px;
     margin-top: 7px;
     border-radius: 4px;
@@ -277,15 +278,21 @@ position: relative;
     box-shadow: 2px 4px 7px 6px rgba(252, 123, 122, 0.21);
 }
 .mini-box_artikel-terbaru a{
-  font-size: 12px;
-  color: #4a4a4a;
-  float: right;
-  width: 109px;
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #444444;
+  float: right  
+  width: 216px;
   margin-top: 5px;
 }
 .content_article-terbaru{
     display: block;
-    width: 180px;
+    width: 100%;
     height: 75px;
     padding-bottom: 5px;
     /*margin-top: 15px;*/
@@ -293,6 +300,7 @@ position: relative;
 .images_article-terbaru{
     width: 64px;
     float: left;
+    margin-right: 16px
 }
 .artikel-icon-videos {
     position: absolute;
@@ -369,14 +377,14 @@ section.article_terkait, section.emoticon_article{
 }
 .header_article-terkait{
   font-family: Lato;
-  font-size: 18px;
+  font-size: 28px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: 1.17;
+  line-height: 0.75;
   letter-spacing: normal;
-  color: #4a4a4a;
-  margin-bottom: 23px;
+  color: #333333;
+  margin-bottom: 19px;
 }
 section.emoticon_article{
   padding-top: 2rem;
@@ -567,4 +575,14 @@ section.flash-ads{
 .content-main section .container{
   width: 930px;
   }
+}
+
+@media (max-width: 991px){
+  .mini-box_artikel{
+    width: 45%
+  }
+  .mini-box_artikel-container{
+    width: 60%
+  }
+
 }
