@@ -241,7 +241,7 @@ position: relative;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    padding: 10px;
+    padding: 10px 8px 0px 16px;
     color: #000;
     position: absolute;
     top: 50px;
@@ -256,6 +256,7 @@ position: relative;
     overflow-x: hidden;
     height: 335px;
     margin-top: 15px;
+    margin-left: 6px;
 }
 .mini-box_artikel-terbaru{
   display: inline-block;
@@ -276,6 +277,19 @@ position: relative;
     letter-spacing: normal;
     color: #4a4a4a;
     box-shadow: 2px 4px 7px 6px rgba(252, 123, 122, 0.21);
+}
+.header_article-terbaru{
+    font-family: Lato;
+    font-size: 28px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.75;
+    letter-spacing: normal;
+    color: #333333;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    margin-left: 6px;
 }
 .mini-box_artikel-terbaru a{
   font-family: Lato;
@@ -344,6 +358,7 @@ position: relative;
     top: 7px;
 }
 .category-artikel {
+  display: none;
     width: 99px;
     height: 13px;
     font-family: 'Lato-Regular','Lato';
@@ -354,9 +369,20 @@ position: relative;
     text-align: left;
     width: 210px;
 }
+.date-article{
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #9b9b9b;
+  position: absolute;
+  bottom: 12px
+}
 .mini-box_artikel .content-box .title-artikel {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 68px;
     font-family: Lato;
     font-size: 16px;
     font-weight: bold;
@@ -377,6 +403,7 @@ position: relative;
     top: 0;
     left: 0;
     margin-bottom: 5px;
+    overflow: auto;
 }
 .content-box .wrap-mini-artikel_comment {
     position: relative;
@@ -411,7 +438,7 @@ position: relative;
     left: 40px;
     width: 30px
 }
-section.article_terkait, section.emoticon_article{
+section.article_terkait, section.emoticon_article, section.comment_article{
   background-color: #f8f8f8;
 }
 .header_article-terkait{
@@ -615,7 +642,11 @@ section.flash-ads{
   width: 930px;
   }
 }
-
+@media (min-width: 992px){
+.content-main section .container{
+  width: 930px;
+  }
+}
 @media (max-width: 991px){
   .mini-box_artikel{
     width: 45%
@@ -623,5 +654,25 @@ section.flash-ads{
   .mini-box_artikel-container{
     width: 60%
   }
-
+  .mini-box_artikel-terbaru a{
+    font-size: 13px !important
+  }
+  .comment-artikel{
+    left: 32px;
+    width: 30px;
+  }
+  .wrap-mini-artikel_comment{
+      left: -105px;
+      top:-5px;
+  }
+  .author_article-terbaru{
+    font-size: 11px;
+    width: 106px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mini-box_artikel .content-box .title-artikel{
+    width: 165px;
+  }
 }
