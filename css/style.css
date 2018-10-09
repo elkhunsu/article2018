@@ -344,7 +344,7 @@ position: relative;
   color: #9b9b9b;
   float: left;
   }
-.artikel-icon-videos {
+.artikel-icon-videoss {
     position: absolute;
     background: url(https://loop.co.id/revamp2018/images/icon/video-camera.svg) 5px 3px no-repeat;
     background-size: 16px;
@@ -588,7 +588,12 @@ section.flash-ads{
     background-color: #ee484f;
   box-shadow: 0 -5px 22px 0 rgba(238, 72, 79, 0.2);
 }
-
+.share-social_section{
+  position: fixed;
+  float: left;
+  width: 68px;
+  height: 220px;
+}
 
 .sprite {
     background-image: url('/article2018/images/emoticon/sprite_emoticon.png');
