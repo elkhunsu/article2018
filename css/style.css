@@ -130,9 +130,8 @@ section.article_content > div > p{
     pointer-events: none;
     background: unset;
 }
-.main_article > p:nth-child(2):before  {
+.main_article > p:nth-child(1):before  {
     position: absolute;
-    bottom: -10px;
     height: 180px;
     width: 100%;
     content: "";
