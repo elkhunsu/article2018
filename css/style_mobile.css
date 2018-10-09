@@ -585,7 +585,7 @@ section.flash-ads{
 
 
 .sprite {
-    background-image: url(/images/emoticon/sprite_emoticon.png);
+    background-image: url('/article2018/images/emoticon/sprite_emoticon.png');
     background-repeat: no-repeat;
     background-size: 225px;
     display: block;
